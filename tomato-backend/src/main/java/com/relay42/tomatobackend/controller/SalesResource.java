@@ -19,6 +19,7 @@ import static java.util.stream.Collectors.toList;
 public class SalesResource {
     private static final int TOMATOES_UPPER_BOUND = 2000;
     private static final int CURRENT_YEAR = 2017;
+    private static final int PROVIDERS_COUNT = Provider.values().length;
 
     @RequestMapping("/data")
     public List<Sale> get(@RequestParam(value = "size", required = false, defaultValue = "3") int size) {
@@ -28,14 +29,13 @@ public class SalesResource {
     private List<Sale> buildSalesList(int size) {
         return IntStream.range(0, size)
                 .mapToObj(item -> {
-                    int providersCount = Provider.values().length;
                     LocalDate startDate = LocalDate.ofYearDay(CURRENT_YEAR, 1);
                     LocalDate endDate = LocalDate.now();
                     List<LocalDate> datesBetween = getDatesBetween(startDate, endDate);
                     return new Sale(
                             UUID.randomUUID().toString(),
                             new Random().nextInt(TOMATOES_UPPER_BOUND),
-                            Provider.values()[new Random().nextInt(providersCount)].getStrValue(),
+                            Provider.values()[new Random().nextInt(PROVIDERS_COUNT)].getStrValue(),
                             toEpochMilli(datesBetween.get(new Random().nextInt(datesBetween.size())))
                     );
                 })
