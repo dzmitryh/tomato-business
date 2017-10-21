@@ -67,7 +67,7 @@ class App extends Component {
               <th>Sale date</th>
             </tr>
             {this.state.sales.map(sale =>
-              <tr>
+              <tr key={sale.id}>
                 <td>{sale.provider}</td>
                 <td>{sale.tomatoes}</td>
                 <td>{new Date(sale.timestamp).toLocaleDateString()}</td>
