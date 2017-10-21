@@ -2,13 +2,13 @@ package com.relay42.tomatobackend.domain;
 
 import static com.google.common.base.MoreObjects.toStringHelper;
 
-public class Data {
+public class Sale {
     private final String id;
     private final int tomatoes;
     private final String provider;
     private final long timestamp;
 
-    public Data(String id, int tomatoes, String provider, long timestamp) {
+    public Sale(String id, int tomatoes, String provider, long timestamp) {
         this.id = id;
         this.tomatoes = tomatoes;
         this.provider = provider;

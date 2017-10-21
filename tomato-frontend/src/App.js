@@ -22,7 +22,7 @@ class App extends Component {
   }
 
   callApi(size) {
-    let request = "http://localhost:8080/tomato/data";
+    let request = "http://localhost:8080/sales/data";
     if (size) {
       request += "?size=" + size;
     }
