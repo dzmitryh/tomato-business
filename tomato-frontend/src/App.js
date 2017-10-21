@@ -60,18 +60,20 @@ class App extends Component {
         </div>
 
         <table className="sales">
-          <tr>
-            <th>Provider</th>
-            <th>Tomatoes</th>
-            <th>Sale date</th>
-          </tr>
-          {this.state.sales.map(sale =>
+          <tbody>
             <tr>
-              <td>{sale.provider}</td>
-              <td>{sale.tomatoes}</td>
-              <td>{new Date(sale.timestamp).toLocaleDateString()}</td>
+              <th>Provider</th>
+              <th>Tomatoes</th>
+              <th>Sale date</th>
             </tr>
-          )}
+            {this.state.sales.map(sale =>
+              <tr>
+                <td>{sale.provider}</td>
+                <td>{sale.tomatoes}</td>
+                <td>{new Date(sale.timestamp).toLocaleDateString()}</td>
+              </tr>
+            )}
+          </tbody>
         </table>
       </div>
     );
