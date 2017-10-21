@@ -28,7 +28,6 @@ class App extends Component {
     }
     axios.get(request)
       .then(res => {
-        console.log('response is' + res);
         this.setState({sales: res.data});
       });
   }
