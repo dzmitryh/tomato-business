@@ -1,43 +1,25 @@
 package com.relay42.tomatobackend.domain;
 
-import static com.google.common.base.MoreObjects.toStringHelper;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.google.auto.value.AutoValue;
 
-public class Sale {
-    private final String id;
-    private final int tomatoes;
-    private final String provider;
-    private final long timestamp;
+import javax.annotation.Nonnull;
 
-    public Sale(String id, int tomatoes, String provider, long timestamp) {
-        this.id = id;
-        this.tomatoes = tomatoes;
-        this.provider = provider;
-        this.timestamp = timestamp;
-    }
+@AutoValue
+public abstract class Sale {
+    @JsonProperty
+    public abstract String id();
+    @JsonProperty
+    public abstract int tomatoes();
+    @JsonProperty
+    public abstract String provider();
+    @JsonProperty
+    public abstract long timestamp();
 
-    public String getId() {
-        return id;
-    }
-
-    public int getTomatoes() {
-        return tomatoes;
-    }
-
-    public String getProvider() {
-        return provider;
-    }
-
-    public long getTimestamp() {
-        return timestamp;
-    }
-
-    @Override
-    public String toString() {
-        return toStringHelper(this)
-                .add("id", id)
-                .add("tomatoes", tomatoes)
-                .add("provider", provider)
-                .add("timestamp", timestamp)
-                .toString();
+    @JsonCreator
+    public static Sale create(@Nonnull String id, int tomatoes,
+                              @Nonnull String provider, long timestamp) {
+        return new AutoValue_Sale(id, tomatoes, provider, timestamp);
     }
 }

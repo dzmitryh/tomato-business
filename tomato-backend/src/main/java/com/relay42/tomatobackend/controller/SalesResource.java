@@ -32,7 +32,7 @@ public class SalesResource {
                     LocalDate startDate = LocalDate.ofYearDay(CURRENT_YEAR, 1);
                     LocalDate endDate = LocalDate.now();
                     List<LocalDate> datesBetween = getDatesBetween(startDate, endDate);
-                    return new Sale(
+                    return Sale.create(
                             UUID.randomUUID().toString(),
                             new Random().nextInt(TOMATOES_UPPER_BOUND),
                             Provider.values()[new Random().nextInt(PROVIDERS_COUNT)].getStrValue(),
