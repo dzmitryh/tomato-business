@@ -17,7 +17,7 @@ class App extends Component {
     this.handleClick = this.handleClick.bind(this);
   }
 
-  componentDidMount() {
+  componentWillMount() {
     this.callApi();
   }
 
